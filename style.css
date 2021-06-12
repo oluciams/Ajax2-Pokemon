@@ -1,0 +1,17 @@
+.delete{
+    cursor: pointer;
+    color: rgb(230, 123, 123);
+}
+
+.columns {
+    display: flex;
+    flex-direction: wrap;
+    
+}
+
+#pokeDetails {
+    position: fixed;
+    margin-left: 50%;
+
+}
+
