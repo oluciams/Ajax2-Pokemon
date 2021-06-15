@@ -3,15 +3,6 @@
     color: rgb(230, 123, 123);
 }
 
-.columns {
-    display: flex;
-    flex-direction: wrap;
-    
+.hide{
+    display: none;
 }
-
-#pokeDetails {
-    position: fixed;
-    margin-left: 50%;
-
-}
-

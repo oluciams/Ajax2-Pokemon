@@ -18,7 +18,7 @@
                     src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72"
                     height="57">
                 <h2>My Pokemon List</h2>
-                <p class="lead">Here are my contacts</p>
+                <p class="lead"></p>
             </div>
         </header>
         <main>
@@ -28,7 +28,28 @@
             <div class="columns">                        
                 <section class="row mt-4" id="pokes">                
                 </section>
-                <section id="pokeDetails">                               
+                <section id="pokeDetails">
+                                       
+                    <button type="button"  id="buttonModal" class="hide btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Launch demo modal
+                    </button>              
+              
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="titleModal"></h5>                         
+                                    </div>
+                                    <div class="modal-body" id="bodyModal">                            
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>    
+                                </div>                       
+                            </div>
+                        </div>                        
+                    </div>
+
+                                                   
                 </section>  
             </div>
         </main>
