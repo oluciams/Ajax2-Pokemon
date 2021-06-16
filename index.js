@@ -1,76 +1,40 @@
 "use strict";
 
-const pokeList = document.getElementById('pokes');
-const button = document.getElementById('savePoke')
-const pokeDetails = document.getElementById("pokeDetails")
-const buttonModal = document.getElementById("buttonModal")
-const titleModal= document.getElementById("titleModal")
-const bodyModal = document.getElementById("bodyModal")
+import{getData} from "./modules/apiRequest.js"
 
-
-const URL = 'https://pokeapi.co/api/v2/pokemon'
-
-const getData = (ruta) => {
-  fetch(`${URL}/${ruta}`)
-    .then(response => response.json())
-    .then(data => {     
-      data.results.forEach(element => {
-        pokeUI(element)
-      });      
-    })
-}
-
-
-
-function pokeUI({ name, url }) {
-  const row = document.createElement('div');
-  row.innerHTML = `
-  <div class="card mt-4" style="width: 18rem;"> 
-    <div class="card-body">
-      <h5 class="card-title">${name}</h5>  
-      <button class="details btn btn-success" id=${url} >More details</button>
-    </div>
-  </div>
-  `;
-  pokeList.appendChild(row);
-};
-
-button.addEventListener('click', () => getData('?limit=100'))
-
-pokeList.addEventListener('click', (e) => {
-  if (e.target.matches('.details')) {
-  const url = e.target.id
-  getDetails(url)
-  }
+window.addEventListener("load", ()=> {
+  getData("popular")
+  .then((data) => data.results.map((movie) => movieCard(movie)))  
+  // .then((data)=>data.results.forEach(movie => {
+  //   movieCard(movie)    
+  // }))
+  .catch(error=>console.warn(error))
 })
 
-const getDetails = (url) => {
-  fetch(url)
-  .then(response => response.json())
-  .then(data => {    
-    moreDetails(data)
-    })
-};
- 
-function moreDetails ({name, weight, height, abilities, sprites}){
-  titleModal.textContent=`${name}`
-  bodyModal.innerHTML = `
-  <div>
-    <img src="${sprites.front_default}" class="img-fluid">  
-  </div> 
-    <p class="card-text">Mi habilidad principal es: ${abilities[0].ability.name}</p>  
-    <p class="card-text">Mi peso es: ${weight}</p>
-    <p class="card-text">Mi estatura es: ${height}</p>
-  `
-  buttonModal.click()  
-}
 
-// pokeDetails.addEventListener('click', (e) => {
-//   if (e.target.matches('#delete')) {
-//     //console.log(e.target.parentElement.parentElement)
-//     e.target.parentElement.parentElement.parentElement.remove()
-//   }
-// })
+const root = document.getElementById('moviesSection');
+
+
+const movieCard = ({ title, overview, poster_path, release_date }) => { 
+const row = document.createElement('div');
+row.innerHTML = `
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4"> 
+          <img class= "moviePoster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="movie_poster">
+        </div> 
+        <div class="col-md-8">
+          <div class="card-body">
+          <h5 class="card-title">${title}</h5> 
+          <p class="card-text">${overview}</p>
+          <p class="card-text"><small class="text-muted">${release_date}</small></p> 
+        </div> 
+      </div> 
+    </div>
+  </div>
+`;
+root.appendChild(row);
+}; 
 
 
 
