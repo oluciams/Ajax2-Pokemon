@@ -65,19 +65,8 @@ row.innerHTML = `
 root.appendChild(row);
 }; 
 
-// buttonClear.addEventListener("click", ()=>{
-//   console.log("hola")
-//   movieClear()
-// })
-
 const movieClear = () => {  
   root.innerHTML = ""
 }; 
   
   
-//TODO: 
-/**
- crear un select
- el select tendra la opcion de popular o top_rated
- al seleccionar una u otra debe pintar las peliculas de la categoria que pertenezcan
- */
