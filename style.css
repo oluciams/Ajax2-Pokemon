@@ -3,11 +3,9 @@
     color: rgb(230, 123, 123);
 }
 
-.hide{
-    display: none;
-}
 
 .moviePoster{
    
-    width: 50%;
+    width: auto;
+    height: 60%;
 }
