@@ -22,22 +22,29 @@ window.addEventListener("load",async ()=> {
     .catch(error=>console.warn(error))
 })
 */
+const selected = document.getElementById("listMovie")
+const root = document.getElementById('moviesSection')
+const buttonClear= document.getElementById("clear")
 
-window.addEventListener("load",async ()=> { 
-  try{
-    const data = await getMovies("top_rated") 
-      if (data.status_code && !data.success) {
-      throw new Error(`OH NO ERROR try catch ${data.status_message}`)
-      } 
-    data.results.map((movie) => movieCard(movie))
+
+selected.addEventListener("click",async (e)=> { 
+  movieClear()
+  if(e.target.matches("#listMovie")){
+    const category= e.target.value
+
+    try{
+      const data = await getMovies(category) 
+        if (data.status_code && !data.success) {
+        throw new Error(`OH NO ERROR try catch ${data.status_message}`)
+        } 
+      data.results.map((movie) => movieCard(movie))
+    }
+    catch (error){
+      console.warn(error)
+    }  
   }
-  catch (error){
-    console.warn(error)
-  }  
+
 })
-
-const root = document.getElementById('moviesSection');
-
 /**
  * 
  * @param {object} movie movie object 
@@ -58,11 +65,16 @@ row.innerHTML = `
 root.appendChild(row);
 }; 
 
+// buttonClear.addEventListener("click", ()=>{
+//   console.log("hola")
+//   movieClear()
+// })
 
-
-
-
-
+const movieClear = () => {  
+  root.innerHTML = ""
+}; 
+  
+  
 //TODO: 
 /**
  crear un select

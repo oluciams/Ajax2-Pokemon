@@ -2,6 +2,7 @@ const apiKey = "b61364da3cf775b0c719a30ee4fe39b2"
 const URL = "https://api.themoviedb.org/3/movie"
 const URL_COMPLEMENT = `?api_key=${apiKey}&language=en-US`
 
+
 // Inicio código utilizando Promesas con módulos
 /**
  * 

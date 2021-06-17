@@ -4,8 +4,12 @@
 }
 
 
-.moviePoster{
-   
+.moviePoster{   
     width: auto;
     height: 60%;
+}
+
+.option-select{
+    width: 40%;
+    
 }
